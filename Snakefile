@@ -41,7 +41,6 @@ rule STARsolo:
         genome_index = config["genome_info"]["star_index"], #genome index
         whitelist = config["library_info"]["whitelist"] #barcode whitelist
     shell:
-    shell:
         "STAR "
         "--runThreadN {threads} "
         "--genomeDir {params.genome_index} "
