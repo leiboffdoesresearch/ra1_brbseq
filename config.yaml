@@ -1,0 +1,16 @@
+samples:
+  [testfile] 
+  # some sort of structure
+
+hisat_params:
+  min_i: 60
+  max_i: 50000
+  #min intron 60 max intron 50000 from Chen et al. 2018
+
+library_info:
+  whitelist: "brbseq_files/whitelist.txt"
+
+genome_info:
+  genome: "maize_genome/dummy_index"
+  transcriptome: "maize_genome/dummy_transcriptome.fa"
+  tgMap: "maize_genome/dummy_tx2gene.tsv"
