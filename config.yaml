@@ -11,5 +11,5 @@ library_info:
   whitelist: "brbseq_files/whitelist.txt"
 
 genome_info:
-  star_index: "maize_genome/dummy_index"
+  star_index: "maize_genome"
 
