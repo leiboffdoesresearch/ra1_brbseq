@@ -63,6 +63,6 @@ rule STARsolo:
         "--soloCBstart 1   --soloCBlen 6 "
         "--soloUMIstart 7   --soloUMIlen 15 "
         "--soloCBwhitelist {params.whitelist} " 
-        "--soloStrand Reverse "
+        "--soloStrand Forward "
         "--soloMultiMappers EM "
         "--soloFeatures Gene GeneFull SJ Velocyto"
