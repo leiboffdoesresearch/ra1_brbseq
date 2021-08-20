@@ -50,7 +50,6 @@ rule STARsolo:
         "--readFilesCommand zcat "
         "--outFilterType BySJout "
         "--outFilterMultimapNmax 20 "
-        "--outFilterMultimapNmax 20 "
         "--alignSJoverhangMin 8 "
         "--alignSJDBoverhangMin 1 "
         "--outFilterMismatchNmax 999 "
