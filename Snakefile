@@ -29,8 +29,8 @@ rule all:
 # CB UMI Simple
 rule STARsolo:
     input:
-        R1 = 'compressed_reads/{sample}_R1.fastq.gz',
-        R2 = 'compressed_reads/{sample}_R2.fastq.gz'
+        R1 = 'uncompressed_reads/{sample}_R1.fastq',
+        R2 = 'uncompressed_reads/{sample}_R2.fastq'
     output:
         star_out = '{sample}_STAR/',
         solo_out = '{sample}_solo/'
@@ -47,7 +47,6 @@ rule STARsolo:
         "--runThreadN {threads} "
         "--genomeDir {params.genome_index} "
         "--readFilesIn {input.R2} {input.R1} " #order required by solo
-        "--readFilesCommand zcat "
         "--outFilterType BySJout "
         "--outFilterMultimapNmax 20 "
         "--alignSJoverhangMin 8 "
