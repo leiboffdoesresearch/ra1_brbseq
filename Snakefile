@@ -12,7 +12,7 @@ container: "docker://continuumio/miniconda3:4.5.11"
 #elimintates the need for specifying inputs or outputs on command line
 rule all:
     input:
-        expand('{sample}_solo/', sample=config["samples"])
+        expand('{sample}_STAR/', sample=config["samples"])
 
 ############ FOR BRBseq ############
 #sample barcode and UMI info is in R1
@@ -32,8 +32,7 @@ rule STARsolo:
         R1 = 'uncompressed_reads/{sample}_R1.fastq',
         R2 = 'uncompressed_reads/{sample}_R2.fastq'
     output:
-        star_out = '{sample}_STAR/',
-        solo_out = '{sample}_solo/'
+        star_out = '{sample}_STAR/'
     conda:
         "envs/star.yaml"
     threads: 40 # how many?
@@ -63,5 +62,4 @@ rule STARsolo:
         "--soloCBstart 1   --soloCBlen 6 "
         "--soloUMIstart 7   --soloUMIlen 15 "
         "--soloCBwhitelist {params.whitelist} " 
-        "--soloOutFileNames {output.solo_out} "
         "--soloStrand Reverse"
