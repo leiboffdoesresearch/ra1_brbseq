@@ -32,7 +32,7 @@ rule STARsolo:
         R1 = 'uncompressed_reads/{sample}_R1.fastq',
         R2 = 'uncompressed_reads/{sample}_R2.fastq'
     output:
-        star_out = '{sample}_STAR/'
+        star_out = directory('{sample}_STAR/')
     conda:
         "envs/star.yaml"
     threads: 40 # how many?
@@ -53,6 +53,7 @@ rule STARsolo:
         "--outFilterMismatchNmax 999 "
         "--outFilterMismatchNoverLmax 0.1 "
         "--outFileNamePrefix {output.star_out} "
+        "--outSAMattributes NH HI nM AS CR UR CB UB GX GN sS sQ sM "
         "--outSAMtype BAM SortedByCoordinate "
         "--alignIntronMin {params.min_i} "
         "--alignIntronMax {params.max_i} "
@@ -62,4 +63,6 @@ rule STARsolo:
         "--soloCBstart 1   --soloCBlen 6 "
         "--soloUMIstart 7   --soloUMIlen 15 "
         "--soloCBwhitelist {params.whitelist} " 
-        "--soloStrand Reverse"
+        "--soloStrand Reverse "
+        "--soloMultiMappers EM "
+        "--soloFeatures Gene GeneFull SJ Velocyto"
