@@ -35,7 +35,7 @@ rule STARsolo:
         star_out = '{sample}_STAR',
         solo_out = '{sample}_solo'
     conda:
-        "envs/hisat2.yaml"
+        "envs/star.yaml"
     threads: 40 # how many?
     params: 
         genome_index = config["genome_info"]["star_index"], #genome index
