@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 13 of /Users/Home/Desktop/Research/ra1ra2ears/ra1_brbseq/Snakefile:
+Missing input files for rule all:
+testfile_solo/features.tsv

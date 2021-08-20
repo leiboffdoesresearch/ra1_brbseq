@@ -1,0 +1,3 @@
+KeyError in line 41 of /Users/Home/Desktop/Research/ra1ra2ears/ra1_brbseq/Snakefile:
+'star_index'
+  File "/Users/Home/Desktop/Research/ra1ra2ears/ra1_brbseq/Snakefile", line 41, in <module>

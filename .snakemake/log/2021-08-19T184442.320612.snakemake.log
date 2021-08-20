@@ -1,0 +1,3 @@
+KeyError in line 15 of /Users/Home/Desktop/Research/ra1ra2ears/ra1_brbseq/Snakefile:
+'samples'
+  File "/Users/Home/Desktop/Research/ra1ra2ears/ra1_brbseq/Snakefile", line 15, in <module>

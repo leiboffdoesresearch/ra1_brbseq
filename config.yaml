@@ -1,5 +1,5 @@
 samples:
-  [testfile] 
+  [testfile,] 
   # some sort of structure
 
 hisat_params:
@@ -11,6 +11,5 @@ library_info:
   whitelist: "brbseq_files/whitelist.txt"
 
 genome_info:
-  genome: "maize_genome/dummy_index"
-  transcriptome: "maize_genome/dummy_transcriptome.fa"
-  tgMap: "maize_genome/dummy_tx2gene.tsv"
+  star_index: "maize_genome/dummy_index"
+

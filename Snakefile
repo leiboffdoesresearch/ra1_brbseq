@@ -12,7 +12,7 @@ container: "docker://continuumio/miniconda3:4.5.11"
 #elimintates the need for specifying inputs or outputs on command line
 rule all:
     input:
-        expand('{sample}_solo/features.tsv', sample=config["samples"])
+        expand('{sample}_solo', sample=config["samples"])
 
 ############ FOR BRBseq ############
 #sample barcode and UMI info is in R1
@@ -29,17 +29,19 @@ rule all:
 # CB UMI Simple
 rule STARsolo:
     input:
-        R1 = 'compressed_reads/{sample}_R1.fastq.gz'
+        R1 = 'compressed_reads/{sample}_R1.fastq.gz',
         R2 = 'compressed_reads/{sample}_R2.fastq.gz'
     output:
-        star_out = '{sample}_STAR'
+        star_out = '{sample}_STAR',
         solo_out = '{sample}_solo'
     conda:
         "envs/hisat2.yaml"
     threads: 40 # how many?
     params: 
         genome_index = config["genome_info"]["star_index"], #genome index
-        whitelist = config["library_info"]["whitelist"] #barcode whitelist
+        whitelist = config["library_info"]["whitelist"], #barcode whitelist
+        min_i = config["hisat_params"]["min_i"], #min intronlen
+        max_i = config["hisat_params"]["max_i"] #max intronlen
     shell:
         "STAR "
         "--runThreadN {threads} "
@@ -55,8 +57,8 @@ rule STARsolo:
         "--outFilterMismatchNoverLmax 0.1 "
         "--outFileNamePrefix {output.star_out} "
         "--outSAMtype BAM SortedByCoordinate "
-        "--alignIntronMin 60 "
-        "--alignIntronMax 50000 "
+        "--alignIntronMin {params.min_i} "
+        "--alignIntronMax {params.max_i} "
         "--soloBarcodeMate 0 "
         "--soloType CB_UMI_Simple "
         "--soloBarcodeReadLength 0 "
