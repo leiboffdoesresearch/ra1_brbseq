@@ -35,7 +35,7 @@ rule STARsolo:
         star_out = directory('{sample}_STAR/')
     conda:
         "envs/star.yaml"
-    threads: 40 # how many?
+    threads: 12 # how many? 12 seems to be max on CGRB
     params: 
         genome_index = config["genome_info"]["star_index"], #genome index
         whitelist = config["library_info"]["whitelist"], #barcode whitelist
